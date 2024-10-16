@@ -35,7 +35,13 @@ The project uses the Titanic dataset available on Kaggle, which consists of two 
 
 3. **Evaluation**
    - Achieved a validation accuracy of **[0.8547]**.
+  
+     ![Screenshot 2024-10-16 230545](https://github.com/user-attachments/assets/dc766536-d3fb-4056-8cb0-9597ea831d81)
+
    - Achieved a public score of **0.77272** on Kaggle, indicating a 77.272% accuracy in predictions.
+
+     ![Screenshot 2024-10-16 230048](https://github.com/user-attachments/assets/81af9090-a026-4753-b23d-b4b2bd85a150)
+
 
 ## Results
 
@@ -56,6 +62,6 @@ The final model was submitted to Kaggle, yielding a public score of **0.77272**.
 ## Conclusion
 This project provided valuable insights into the factors affecting survival during the Titanic disaster and enhanced my skills in data preprocessing, feature engineering, and model optimization. Future improvements may involve exploring additional models or advanced techniques to further boost the prediction accuracy.
 
-Acknowledgments
+## Acknowledgments
 - Kaggle Titanic Challenge for providing the dataset and challenge.
 - The Kaggle community for shared resources and insights.
