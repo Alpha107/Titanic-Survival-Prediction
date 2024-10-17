@@ -12,7 +12,6 @@ This project is a machine learning approach to predict the survival of passenger
   - [Convolutional Neural Network (CNN)](#convolutional-neural-network-cnn)
 - [Results](#results)
 - [Conclusion](#conclusion)
-- [Kaggle Submission](#kaggle-submission)
 - [Future Work](#future-work)
 
 ---
@@ -62,13 +61,9 @@ Logistic Regression was used as a baseline model. This model is a simple yet eff
 #### Key Characteristics:
 - **Type**: Linear Model
 - **Hyperparameter Tuning**: Used GridSearchCV to optimize `C` and `penalty` hyperparameters.
-- **Validation Accuracy**: 70%
-- **Public Kaggle Score**: 0.77272
 
 #### Logistic Regression Results:
-- **Training Accuracy**: 70%
-- **Validation Accuracy**: 70%
-- **Kaggle Submission Score**: 0.77272 (77.272%)
+- **Validation Accuracy**: 81.75%
 
 ---
 
@@ -80,11 +75,10 @@ The ANN model was used to explore deeper non-linear relationships between featur
 - **Activation Functions**: `ReLU` for hidden layers, `sigmoid` for the output layer
 - **Optimizer**: Adam
 - **Loss Function**: Binary Crossentropy
-- **Validation Accuracy**: 72.5%
 
 #### ANN Results:
-- **Training Accuracy**: 73%
-- **Validation Accuracy**: 72.5%
+- **Training Accuracy**: 89.47%
+- **Validation Accuracy**: 83.80%
 
 ---
 
@@ -96,11 +90,10 @@ Although CNNs are typically used for image data, this project included a CNN mod
 - **Pooling**: MaxPooling layers to downsample the data
 - **Optimizer**: Adam
 - **Loss Function**: Binary Crossentropy
-- **Validation Accuracy**: 73.2%
 
 #### CNN Results:
-- **Training Accuracy**: 74%
-- **Validation Accuracy**: 73.2%
+- **Training Accuracy**: 84.97%
+- **Validation Accuracy**: 80.45%
 
 ---
 
@@ -110,7 +103,7 @@ Here is a summary of the results for each model:
 
 | Model                  | Training Accuracy | Validation Accuracy | Kaggle Public Score |
 |------------------------|-------------------|---------------------|---------------------|
-| Logistic Regression     | 70%               | 70%                 | 0.77272             |
+| Logistic Regression     | NaN               | 81.75%                 | 0.77272             |
 | Artificial Neural Network (ANN) | 89.47%       | 83.80%               | 0.75358                 |
 | Convolutional Neural Network (CNN) | 84.97%   | 80.45%               | 0.7679                 |
 
@@ -118,11 +111,6 @@ Here is a summary of the results for each model:
 
 ## Conclusion
 Through this project, we explored different machine learning models for predicting Titanic survival. Logistic Regression served as a strong baseline, while ANN and CNN models provided slightly better results. ANN and CNN models, with their ability to capture non-linear relationships, showed promise with improved validation accuracy compared to Logistic Regression.
-
----
-
-## Kaggle Submission
-The final submission using Logistic Regression achieved a Kaggle public score of **0.77272** (77.272%). The submission file can be found [here](submission.csv).
 
 ---
 
