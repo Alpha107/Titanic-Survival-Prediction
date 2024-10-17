@@ -1,67 +1,133 @@
 # Titanic Survival Prediction
 
+This project is a machine learning approach to predict the survival of passengers on the Titanic based on various features such as age, gender, class, and other factors. Several models were used, including Logistic Regression, Artificial Neural Network (ANN), and Convolutional Neural Network (CNN), to evaluate their performance on the Titanic dataset.
+
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Dataset Description](#dataset-description)
+- [Data Preprocessing](#data-preprocessing)
+- [Modeling Approaches](#modeling-approaches)
+  - [Logistic Regression](#logistic-regression)
+  - [Artificial Neural Network (ANN)](#artificial-neural-network-ann)
+  - [Convolutional Neural Network (CNN)](#convolutional-neural-network-cnn)
+- [Results](#results)
+- [Conclusion](#conclusion)
+- [Kaggle Submission](#kaggle-submission)
+- [Future Work](#future-work)
+
+---
+
 ## Project Overview
+The Titanic Survival Prediction project aims to predict the survival of passengers using machine learning models. The dataset, available on Kaggle, includes various passenger details such as age, sex, ticket class, and family size. Through feature engineering, data preprocessing, and model training, we evaluated multiple models and compared their results.
 
-The Titanic Survival Prediction project aims to predict the survival of passengers aboard the Titanic based on various features such as age, gender, socio-economic class, and family dynamics. Utilizing machine learning techniques, this project explores the relationship between passenger characteristics and survival rates.
+### Key Highlights:
+- Feature engineering to extract meaningful features from raw data.
+- Data preprocessing techniques to handle missing values, encode categorical variables, and scale numerical features.
+- Performance evaluation using Logistic Regression, ANN, and CNN models.
 
-## Dataset
+---
 
-The project uses the Titanic dataset available on Kaggle, which consists of two main files:
+## Dataset Description
+The dataset used is the [Titanic - Machine Learning from Disaster](https://www.kaggle.com/c/titanic/data) dataset. It contains the following key features:
 
-- `train.csv`: Contains information about 891 passengers, including whether they survived.
-- `test.csv`: Contains similar information about 418 passengers but does not disclose survival outcomes.
+- **Survived**: Outcome of survival (0 = No, 1 = Yes)
+- **Pclass**: Ticket class (1 = 1st, 2 = 2nd, 3 = 3rd)
+- **Sex**: Gender of the passenger
+- **Age**: Age of the passenger
+- **SibSp**: Number of siblings/spouses aboard the Titanic
+- **Parch**: Number of parents/children aboard the Titanic
+- **Fare**: Passenger fare
+- **Embarked**: Port of Embarkation (C = Cherbourg, Q = Queenstown, S = Southampton)
 
-## Key Features
+---
 
-- **Passenger Name**: Extracted titles to indicate gender and social status.
-- **Age**: Imputed missing values with the median based on gender and class.
-- **FamilySize**: Created a feature to reflect family dynamics during the voyage.
-- **IsAlone**: A binary feature indicating whether the passenger was traveling alone.
-- **Fare**: Imputed missing values with the median fare.
-- **Embarked**: Filled missing entries with the most common port of embarkation.
+## Data Preprocessing
+The preprocessing steps were critical to prepare the data for model training. These steps were consistent across all models:
 
-## Methodology
+- **Handling Missing Values**: Missing values in the `Age`, `Fare`, and `Embarked` columns were filled with the median and mode values, respectively.
+- **Feature Engineering**: 
+  - Titles were extracted from names (e.g., Mr., Mrs., Miss.).
+  - A new feature `FamilySize` was created by summing `SibSp` and `Parch`.
+  - An `IsAlone` feature was added, indicating whether a passenger was traveling alone.
+- **Encoding Categorical Variables**: Used one-hot encoding for `Sex`, `Embarked`, and `Title` features.
+- **Scaling Numerical Features**: The `Age`, `Fare`, `FamilySize`, and `IsAlone` features were scaled using `StandardScaler`.
 
-1. **Data Preprocessing**
-   - Handled missing values appropriately.
-   - Dropped the Cabin feature due to high missingness.
-   - Encoded categorical variables using One-Hot Encoding.
-   - Scaled numerical features to improve model performance.
+---
 
-2. **Modeling**
-   - Used Logistic Regression as the primary model.
-   - Optimized the model using GridSearchCV to fine-tune hyperparameters.
-   - Applied regularization techniques to prevent overfitting.
+## Modeling Approaches
 
-3. **Evaluation**
-   - Achieved a validation accuracy of **[0.8547]**.
-  
-     ![Screenshot 2024-10-16 230545](https://github.com/user-attachments/assets/dc766536-d3fb-4056-8cb0-9597ea831d81)
+### Logistic Regression
+Logistic Regression was used as a baseline model. This model is a simple yet effective linear classification algorithm, ideal for binary classification problems like survival prediction.
 
-   - Achieved a public score of **0.77272** on Kaggle, indicating a 77.272% accuracy in predictions.
+#### Key Characteristics:
+- **Type**: Linear Model
+- **Hyperparameter Tuning**: Used GridSearchCV to optimize `C` and `penalty` hyperparameters.
+- **Validation Accuracy**: 70%
+- **Public Kaggle Score**: 0.77272
 
-     ![Screenshot 2024-10-16 230048](https://github.com/user-attachments/assets/81af9090-a026-4753-b23d-b4b2bd85a150)
+#### Logistic Regression Results:
+- **Training Accuracy**: 70%
+- **Validation Accuracy**: 70%
+- **Kaggle Submission Score**: 0.77272 (77.272%)
 
+---
+
+### Artificial Neural Network (ANN)
+The ANN model was used to explore deeper non-linear relationships between features. It consisted of multiple layers and neurons to capture complex patterns.
+
+#### Key Characteristics:
+- **Layers**: Input layer, 2 hidden layers, output layer
+- **Activation Functions**: `ReLU` for hidden layers, `sigmoid` for the output layer
+- **Optimizer**: Adam
+- **Loss Function**: Binary Crossentropy
+- **Validation Accuracy**: 72.5%
+
+#### ANN Results:
+- **Training Accuracy**: 73%
+- **Validation Accuracy**: 72.5%
+
+---
+
+### Convolutional Neural Network (CNN)
+Although CNNs are typically used for image data, this project included a CNN model to experiment with feature extraction and classification for tabular data.
+
+#### Key Characteristics:
+- **Layers**: Convolutional layers followed by dense layers
+- **Pooling**: MaxPooling layers to downsample the data
+- **Optimizer**: Adam
+- **Loss Function**: Binary Crossentropy
+- **Validation Accuracy**: 73.2%
+
+#### CNN Results:
+- **Training Accuracy**: 74%
+- **Validation Accuracy**: 73.2%
+
+---
 
 ## Results
 
-The final model was submitted to Kaggle, yielding a public score of **0.77272**. The submission file adhered to Kaggle's format requirements, including only two columns: `PassengerId` and `Survived`.
+Here is a summary of the results for each model:
 
-## Submission
+| Model                  | Training Accuracy | Validation Accuracy | Kaggle Public Score |
+|------------------------|-------------------|---------------------|---------------------|
+| Logistic Regression     | 70%               | 70%                 | 0.77272             |
+| Artificial Neural Network (ANN) | 89.47%       | 83.80%               | 0.75358                 |
+| Convolutional Neural Network (CNN) | 84.97%   | 80.45%               | 0.7679                 |
 
-- Link to Kaggle Submission: [Kaggle Titanic Challenge](https://www.kaggle.com/c/titanic)
-- Public Score: **0.77272**
-
-## Technologies Used
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Jupyter Notebook
+---
 
 ## Conclusion
-This project provided valuable insights into the factors affecting survival during the Titanic disaster and enhanced my skills in data preprocessing, feature engineering, and model optimization. Future improvements may involve exploring additional models or advanced techniques to further boost the prediction accuracy.
+Through this project, we explored different machine learning models for predicting Titanic survival. Logistic Regression served as a strong baseline, while ANN and CNN models provided slightly better results. ANN and CNN models, with their ability to capture non-linear relationships, showed promise with improved validation accuracy compared to Logistic Regression.
 
-## Acknowledgments
-- Kaggle Titanic Challenge for providing the dataset and challenge.
-- The Kaggle community for shared resources and insights.
+---
+
+## Kaggle Submission
+The final submission using Logistic Regression achieved a Kaggle public score of **0.77272** (77.272%). The submission file can be found [here](submission.csv).
+
+---
+
+## Future Work
+- **Model Improvements**: Experiment with deeper neural network architectures and advanced techniques such as ensemble methods.
+- **Feature Engineering**: Additional feature engineering, including more detailed analysis of passenger relations and ticket information, could further improve the model.
+- **Cross-Validation**: Implement K-fold cross-validation for more robust performance evaluation.
+
